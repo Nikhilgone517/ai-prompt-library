@@ -1,0 +1,9 @@
+<div *ngIf="prompts.length === 0">No prompts found. Add one!</div>
+
+<div style="display: grid; gap: 15px;">
+  <div *ngFor="let prompt of prompts" style="border: 1px solid #ccc; padding: 15px; border-radius: 5px;">
+    <h3 style="margin-top: 0;">{{ prompt.title }}</h3>
+    <p><strong>Complexity:</strong> {{ prompt.complexity }} / 10</p>
+    <a [routerLink]="['/prompts', prompt.id]" style="color: blue;">View Details</a>
+  </div>
+</div>

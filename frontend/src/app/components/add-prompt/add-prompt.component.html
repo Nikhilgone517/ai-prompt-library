@@ -1,0 +1,30 @@
+<form [formGroup]="promptForm" (ngSubmit)="onSubmit()" style="display: flex; flex-direction: column; gap: 15px; max-width: 400px;">
+  
+  <div>
+    <label>Title</label><br>
+    <input formControlName="title" type="text" style="width: 100%; padding: 8px;">
+    <div *ngIf="promptForm.get('title')?.invalid && promptForm.get('title')?.touched" style="color: red; font-size: 12px; margin-top: 4px;">
+      Title must be at least 3 characters.
+    </div>
+  </div>
+
+  <div>
+    <label>Content</label><br>
+    <textarea formControlName="content" rows="4" style="width: 100%; padding: 8px;"></textarea>
+    <div *ngIf="promptForm.get('content')?.invalid && promptForm.get('content')?.touched" style="color: red; font-size: 12px; margin-top: 4px;">
+      Content must be at least 20 characters.
+    </div>
+  </div>
+
+  <div>
+    <label>Complexity (1-10)</label><br>
+    <input formControlName="complexity" type="number" style="width: 100%; padding: 8px;">
+    <div *ngIf="promptForm.get('complexity')?.invalid && promptForm.get('complexity')?.touched" style="color: red; font-size: 12px; margin-top: 4px;">
+      Complexity must be between 1 and 10.
+    </div>
+  </div>
+
+  <button type="submit" [disabled]="promptForm.invalid" style="padding: 10px; cursor: pointer; background: green; color: white; border: none; border-radius: 4px;">
+    Save Prompt
+  </button>
+</form>
